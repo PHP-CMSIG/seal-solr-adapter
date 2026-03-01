@@ -200,7 +200,7 @@ final class SolrSearcher implements SearcherInterface
                     $fieldConfig = $index->getFieldByPath($key);
                     // even non-multiple fields are returned as array we need to convert them to string
                     if (!$fieldConfig->multiple && \is_array($value)) {
-                        $value = \implode(' ', $value);
+                        $value = \implode(' ', $value); // @phpstan-ignore-line argument.type
                     }
 
                     $document['_formatted'][$key] = $value;
